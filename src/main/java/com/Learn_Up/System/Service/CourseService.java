@@ -38,7 +38,6 @@ public class CourseService {
             course.setInstructor(updatedCourse.getInstructor());
             course.setPrice(updatedCourse.getPrice());
             course.setRating(updatedCourse.getRating());
-            // Set other fields as needed
             return courseRepository.save(course);
         } else {
             throw new IllegalArgumentException("Course not found with id: " + id);

@@ -6,20 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/uregister")
-    public ResponseEntity<HttpStatus> registerUser(@RequestBody User user){
-        User save = userService.save(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
     //for getting all user details
     @GetMapping
     public List<User> getUsers() {
@@ -36,24 +34,56 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping
-    public User createUser(@RequestBody User user){
-        return userService.save(user);
+    @PostMapping("/uregister")
+    public ResponseEntity<User> createUser(@RequestParam("name") String name,
+                                           @RequestParam("email") String email,
+                                           @RequestParam("password") String password,
+                                           @RequestParam("role") String role,
+                                           @RequestParam("bio") String bio,
+                                           @RequestParam(value = "profilePicturePath", required = false) MultipartFile profilePicturePath) throws IOException {
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setRole(role);
+        user.setBio(bio);
+        user.setProfilePicturePath(String.valueOf(profilePicturePath));
+
+        if (profilePicturePath != null) {
+            user = userService.saveWithProfilePicturePath(user, profilePicturePath);
+        } else {
+            user = userService.save(user);
+        }
+
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user){
-        User userupdate = userService.findById(id);
-        if(userupdate != null){
-            userupdate.setName(user.getName());
-            userupdate.setEmail(user.getEmail());
-            userupdate.setPassword(user.getPassword());
-            userupdate.setRole(user.getRole());
-            userupdate.setProfilePicture(user.getProfilePicture());
-            userupdate.setBio(user.getBio());
-            return new ResponseEntity<>(userService.save(userupdate), HttpStatus.OK);
+    public ResponseEntity<User> updateUser(@PathVariable Long id,
+                                           @RequestParam("name") String name,
+                                           @RequestParam("email") String email,
+                                           @RequestParam("password") String password,
+                                           @RequestParam("role") String role,
+                                           @RequestParam("bio") String bio,
+                                           @RequestParam(value = "profilePicture", required = false) MultipartFile profilePicture) throws IOException {
+        User user = userService.findById(id);
+        if (user != null) {
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setRole(role);
+            user.setBio(bio);
+
+            if (profilePicture != null) {
+                user = userService.saveWithProfilePicturePath(user, profilePicture);
+            } else {
+                user = userService.save(user);
+            }
+
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")

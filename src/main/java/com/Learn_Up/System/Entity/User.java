@@ -16,8 +16,8 @@ public class User {
     private String email;
     private String password;
     private String role;
-    private String profilePicture;
     private String bio;
+    private String profilePicturePath;
 
     //lets make getter and setter
 
@@ -51,17 +51,18 @@ public class User {
     public void setRole(String role){
         this.role=role;
     }
-    public String getProfilePicture(){
-        return profilePicture;
-    }
-    public void setProfilePicture(String profilePicture){
-        this.profilePicture=profilePicture;
-    }
+
     public String getBio(){
         return bio;
     }
     public void setBio(String bio){
         this.bio=bio;
+    }
+    public String getProfilePicturePath(){
+        return profilePicturePath;
+    }
+    public void setProfilePicturePath(String profilePicture){
+        this.profilePicturePath=profilePicture;
     }
     @Override
     public boolean equals(Object o){

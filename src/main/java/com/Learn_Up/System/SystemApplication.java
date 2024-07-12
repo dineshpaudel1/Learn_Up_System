@@ -8,7 +8,6 @@ public class SystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SystemApplication.class, args);
-		System.out.println("This is after change");
 	}
 
 }

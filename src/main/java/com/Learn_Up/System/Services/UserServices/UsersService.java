@@ -1,7 +1,7 @@
-package com.Learn_Up.System.Services;
+package com.Learn_Up.System.Services.UserServices;
 
-import com.Learn_Up.System.Models.Users;
-import com.Learn_Up.System.Models.UsersResponse;
+import com.Learn_Up.System.Models.UsersModel.Users;
+import com.Learn_Up.System.Models.UsersModel.UsersResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

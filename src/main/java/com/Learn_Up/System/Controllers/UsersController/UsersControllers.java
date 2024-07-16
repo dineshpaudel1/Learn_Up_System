@@ -1,8 +1,8 @@
-package com.Learn_Up.System.Controllers;
+package com.Learn_Up.System.Controllers.UsersController;
 
-import com.Learn_Up.System.Models.Users;
-import com.Learn_Up.System.Models.UsersResponse;
-import com.Learn_Up.System.Services.UsersService;
+import com.Learn_Up.System.Models.UsersModel.Users;
+import com.Learn_Up.System.Models.UsersModel.UsersResponse;
+import com.Learn_Up.System.Services.UserServices.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

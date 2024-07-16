@@ -1,4 +1,4 @@
-package com.Learn_Up.System.Entities;
+package com.Learn_Up.System.Entities.UsersEntity;
 
 
 import jakarta.persistence.*;

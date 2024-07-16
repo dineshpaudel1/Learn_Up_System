@@ -1,10 +1,10 @@
-    package com.Learn_Up.System.Services;
+    package com.Learn_Up.System.Services.UserServices;
 
-    import com.Learn_Up.System.Entities.UsersEntity;
-    import com.Learn_Up.System.Models.Users;
-    import com.Learn_Up.System.Models.UsersResponse;
+    import com.Learn_Up.System.Entities.UsersEntity.UsersEntity;
+    import com.Learn_Up.System.Models.UsersModel.Users;
+    import com.Learn_Up.System.Models.UsersModel.UsersResponse;
     import com.Learn_Up.System.CustomMessage;
-    import com.Learn_Up.System.Repositories.UsersRepository;
+    import com.Learn_Up.System.Repositories.UserRepository.UsersRepository;
     import com.amazonaws.util.IOUtils;
     import org.springframework.beans.BeanUtils;
     import org.springframework.beans.factory.annotation.Autowired;

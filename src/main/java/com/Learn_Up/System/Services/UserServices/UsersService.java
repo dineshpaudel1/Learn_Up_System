@@ -15,6 +15,5 @@ public interface UsersService {
     ResponseEntity<?>returnPhoto(String fileName);
     ResponseEntity<String>deleteUsers(Long userId);
     ResponseEntity<String>updateUsers(Long usersId, Users updatedUsers, MultipartFile file);
-
 }
 

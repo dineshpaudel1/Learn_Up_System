@@ -1,6 +1,4 @@
 package com.Learn_Up.System.Entities.UsersEntity;
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

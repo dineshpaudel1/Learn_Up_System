@@ -35,18 +35,14 @@
         private String path;
 
         public ResponseEntity<String> addUser(Users users, MultipartFile file) {
-
             try {
                 String fileName = file.getOriginalFilename();
                 String filePath = path + File.separator + fileName;
-
                 File f = new File(path);
                 if (!f.exists()) {
                     f.mkdir();
                 }
-
                 Files.copy(file.getInputStream(), Paths.get(filePath));
-
                 UsersEntity usersEntity = UsersEntity.builder().name(users.getName())
                         .email(users.getEmail())
                         .password(users.getPassword())
@@ -55,7 +51,6 @@
                         .build();
                 usersRepository.save(usersEntity);
                 return new ResponseEntity<>("Course added successfully", HttpStatus.OK);
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

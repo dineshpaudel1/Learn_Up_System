@@ -28,7 +28,7 @@ public class UsersControllers {
     private UsersService usersService;
 
 
-    @PostMapping("/add")
+    @PostMapping("/register")
     public ResponseEntity<String> addUser(@RequestParam("users")String data,@RequestParam("file") MultipartFile file) throws IOException {
         Users users = mapper.readValue(data, Users.class);
         return usersService.addUser(users,file);

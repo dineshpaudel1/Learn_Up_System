@@ -95,6 +95,8 @@
                 return new ResponseEntity<>("User not found for delete" + e.getMessage(), HttpStatus.NOT_FOUND);
             }
         }
+
+        @Override
         public ResponseEntity<String>updateUsers(Long usersId, Users updateUsers, MultipartFile file) {
             try{
                 Optional<UsersEntity> optionalUsers=usersRepository.findById(usersId);

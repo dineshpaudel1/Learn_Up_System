@@ -14,4 +14,5 @@ public class Course {
     private String courseDescription;
     private String category;
     private Long price;
+    private String thumbnail;
 }
